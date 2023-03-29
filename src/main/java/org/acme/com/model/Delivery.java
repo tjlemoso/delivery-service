@@ -42,4 +42,7 @@ public class Delivery {
   
   @Column(name = "productId")
   private Long productId;
+
+  @Column(name = "supplierId")
+  private Long supplierId;
 }

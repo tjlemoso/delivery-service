@@ -73,7 +73,13 @@ public class DeliveryRepositoryResource {
             throw new WebApplicationException("Delivery with id of " + id + " does not exist.", 404);
         }
 
-        entity.setStatus(delivery.getStatus());  
+        entity.setStatus(delivery.getStatus());
+        entity.setTrackingCode(delivery.getTrackingCode());  
+        entity.setQuantity(delivery.getQuantity());
+        entity.setClientId(delivery.getClientId());
+        entity.setProductId(delivery.getProductId());
+        entity.setSupplierId(delivery.getSupplierId());
+        entity.setWarehouseId(delivery.getWarehouseId());
         
         return entity;
     }
