@@ -22,8 +22,8 @@ public class Delivery {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long deliveryId;
 
-  @Column(name = "createData")
-  private LocalDate createData;
+  @Column(name = "createDate")
+  private LocalDate createDate;
 
   @Column(name = "quantity")
   private Long quantity;

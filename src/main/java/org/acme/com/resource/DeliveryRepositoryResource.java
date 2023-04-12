@@ -1,5 +1,6 @@
 package org.acme.com.resource;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -56,6 +57,7 @@ public class DeliveryRepositoryResource {
         if (delivery.getQuantity() == 0) {
             throw new WebApplicationException("Delivery was invalidly set on request.", 422);
         }
+        delivery.setCreateDate(LocalDate.now());
         deliveryRepository.persist(delivery);
         return Response.ok(delivery).status(201).build();
     }
@@ -95,6 +97,16 @@ public class DeliveryRepositoryResource {
 
       deliveryRepository.delete(entity);
       return Response.status(204).build();
+    }
+
+    @GET
+    @Path("{code}")
+    public Delivery getSingleByCode(String code) {
+        Delivery entity = deliveryRepository.findByCode(code);
+        if (entity == null) {
+            throw new WebApplicationException("User with id of " + code + " does not exist.", 404);
+        }        
+        return entity;
     }
 
     @Provider
